@@ -36,20 +36,20 @@ class CNV_Type:
 class InputNumbers:
     def __init__(self,Order,NCNV):
         self.Order = Order
-        self.NCNV = NCNV-1
+        self.NCNV = NCNV
     def getValues(self):
         loop=True
         while (loop):
             loop=False
-            print('Enter the '+ self.Order + ' numbers :')
+            print('Enter the %s '%self.NCNV + self.Order + ' Numbers :')
             Numbers=input()
             #checking if the numbers are written right or not
-            CheckRegex=re.compile(r'^((-|\d)\d*(,|\s)){%s}(-|\d)\d*$'%self.NCNV)
+            CheckRegex=re.compile(r'^((-|\d)\d*(,|\s)){%s}(-|\d)\d*$'%(self.NCNV-1))
             CheckNum=CheckRegex.search(Numbers)
             try:
                 CheckValid = CheckNum.group()
             except:
-                print("Numbers must be entered as x,x or x x")
+                print('The %s Numbers must be entered as x,x or x x'%self.NCNV)
                 loop=True
         #converting string into list of two integers
         ValidNumbers=Numbers.split()
@@ -62,21 +62,27 @@ class InputNumbers:
 def getNCNV():
     loop=True
     while(loop):
+        NCNV=0
         loop=False
-        print("Please enter 2 4 8 for choosing 2CNV 4CNV 8CNV respectively")
+        print('Enter 2 4 8 for choosing 2CNV 4CNV 8CNV respectively:')
         CNVMode=input()
-        if(int(CNVMode)==2):
-            NCNV=2
-        elif(int(CNVMode)==4):
-            NCNV=4
-        elif(int(CNVMode)==8):
-            NCNV=8
-        else:
+        try:
+            if(int(CNVMode)==2):
+                NCNV=2
+            elif(int(CNVMode)==4):
+                NCNV=4
+            elif(int(CNVMode)==8):
+                NCNV=8
+            else:
+                print('Invalid Number.')
+                loop=True
+        except:
+            print('Invalid Number.')
             loop=True
     return NCNV
 
 NCNV=getNCNV()
-X=InputNumbers("First",NCNV)
-Y=InputNumbers("Second",NCNV)
+X=InputNumbers('First',NCNV)
+Y=InputNumbers('Second',NCNV)
 C=CNV_Type(NCNV,X.getValues(),Y.getValues())
 C.CNV()
