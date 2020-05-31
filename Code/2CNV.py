@@ -21,8 +21,11 @@ def getValues():
         #checking if the numbers are written right or not
         CheckRegex=re.compile(r'^(-|\d)\d*(,|.|\s)(-|\d)\d*$')
         CheckNum=CheckRegex.search(Numbers)
-        if not (CheckNum.group()):
-            print("~~Please enter numbers again as xx,xx or xx xx~~")
+        try:
+            CheckValid = CheckNum.group()
+        except:
+            searchbox_result = None
+            print("Numbers must be entered as x,x or x x")
             loop1=True
     Num1Regex=re.compile(r'^((-|\d)(\d*))(,|.|\s)')
     SearchNum1=Num1Regex.search(Numbers)
@@ -37,8 +40,11 @@ def getValues():
         #checking if the numbers are written right or not
         CheckRegex=re.compile(r'^(-|\d)\d*(,|.|\s)(-|\d)\d*$')
         CheckNum=CheckRegex.search(Numbers)
-        if not (CheckNum.group()):
-            print("~~Please enter numbers again as xx,xx or xx xx~~")
+        try:
+            CheckValid = CheckNum.group()
+        except:
+            searchbox_result = None
+            print("Numbers must be entered as x,x or x x")
             loop2=True
     Num2Regex=re.compile(r'^((-|\d)(\d*))(,|.|\s)')
     SearchNum2=Num2Regex.search(Numbers)
@@ -52,6 +58,4 @@ def getValues():
 VN=getValues()
 X=[VN[0],VN[1]]
 Y=[VN[2],VN[3]]
-print(X)
-print(Y)
 CNV2(X,Y)
