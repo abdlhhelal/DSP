@@ -1,4 +1,4 @@
-
+import re
 
 def CNV2(X,Y):
     R1=[(X[0]*Y[0]),(X[1]*Y[0]),0]
@@ -14,60 +14,44 @@ def CNV2(X,Y):
 def getValues():
     loop1=True
     loop2=True
-    while(loop1):
+    while (loop1):
         loop1=False
-        print('Please Enter The first numbers:')
-        First=input()
-        if (First[0].isdecimal()):
-            x1=int(First[0])
-            if(First[2].isdecimal()):
-                x2=int(First[2])
-            elif(First[2] == '-'):
-                x2=int(First[3])* -1
-            else:
-                print('Please Enter a Valid Number')
-                loop1=True
-        elif(First[0] == '-'):
-            x1=int(First[1])* -1
-            if(First[3].isdecimal()):
-                x2=int(First[3])
-            elif(First[3] == '-'):
-                x2=int(First[4])* -1
-            else:
-                print('Please Enter a Valid Number')
-                loop1=True
-        else:
-            print('Please Enter a Valid Number')
+        print('Enter the first numbers :')
+        Numbers=input()
+        #checking if the numbers are written right or not
+        CheckRegex=re.compile(r'^(-|\d)\d*(,|.|\s)(-|\d)\d*$')
+        CheckNum=CheckRegex.search(Numbers)
+        if not (CheckNum.group()):
+            print("~~Please enter numbers again as xx,xx or xx xx~~")
             loop1=True
-    while(loop2):
+    Num1Regex=re.compile(r'^((-|\d)(\d*))(,|.|\s)')
+    SearchNum1=Num1Regex.search(Numbers)
+    Num1_1=int(SearchNum1.group(1))
+    Num2Regex=re.compile(r'(,|.|\s)((-|\d)(\d*))$')
+    SearchNum2=Num2Regex.search(Numbers)
+    Num1_2=int(SearchNum2.group(2))
+    while (loop2):
         loop2=False
-        print('Please Enter The second numbers:')
-        Second=input()
-        if (Second[0].isdecimal()):
-            y1=int(Second[0])
-            if(Second[2].isdecimal()):
-                y2=int(Second[2])
-            elif(Second[2] == '-'):
-                y2=int(Second[3])* -1
-            else:
-                print('Please Enter a Valid Number')
-                loop2=True
-        elif(Second[0] == '-'):
-            y1=int(Second[1])* -1
-            if(Second[3].isdecimal()):
-                y2=int(Second[3])
-            elif(Second[3] == '-'):
-                y2=int(Second[4]) * -1
-            else:
-                print('Please Enter a Valid Number')
-                loop2=True
-        else:
-            print('Please Enter a Valid Number')
+        print('Enter the second numbers:')
+        Numbers=input()
+        #checking if the numbers are written right or not
+        CheckRegex=re.compile(r'^(-|\d)\d*(,|.|\s)(-|\d)\d*$')
+        CheckNum=CheckRegex.search(Numbers)
+        if not (CheckNum.group()):
+            print("~~Please enter numbers again as xx,xx or xx xx~~")
             loop2=True
-    ValidNumbers=[x1,x2,y1,y2]
+    Num2Regex=re.compile(r'^((-|\d)(\d*))(,|.|\s)')
+    SearchNum2=Num2Regex.search(Numbers)
+    Num2_1=int(SearchNum2.group(1))
+    Num2Regex=re.compile(r'(,|.|\s)((-|\d)(\d*))$')
+    SearchNum2=Num2Regex.search(Numbers)
+    Num2_2=int(SearchNum2.group(2))
+    ValidNumbers=[Num1_1,Num1_2,Num2_1,Num2_2]
     return ValidNumbers
 
 VN=getValues()
 X=[VN[0],VN[1]]
 Y=[VN[2],VN[3]]
+print(X)
+print(Y)
 CNV2(X,Y)
