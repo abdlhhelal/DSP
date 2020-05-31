@@ -35,6 +35,7 @@ class CNV_Type:
         print('Output is:',end='') #printing the output
         for i in range(len(sum)):
             print(' '+str(sum[i]),end='')
+        print('\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*.*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         return None
 
 class InputNumbers:
@@ -81,8 +82,9 @@ def getNCNV():
             loop=True
     return NCNV
 
-NCNV=getNCNV()
-X=InputNumbers('First',NCNV)
-Y=InputNumbers('Second',NCNV)
-C=CNV_Type(NCNV,X.getValues(),Y.getValues())
-C.CNV()
+while(True):
+    NCNV=getNCNV()
+    X=InputNumbers('First',NCNV)
+    Y=InputNumbers('Second',NCNV)
+    C=CNV_Type(NCNV,X.getValues(),Y.getValues())
+    C.CNV()
