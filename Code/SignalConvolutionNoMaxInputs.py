@@ -67,12 +67,8 @@ def getNCNV():
         print('Enter 2 4 8 for choosing 2CNV 4CNV 8CNV respectively:')
         CNVMode=input()
         try:
-            if(int(CNVMode)==2):
-                NCNV=2
-            elif(int(CNVMode)==4):
-                NCNV=4
-            elif(int(CNVMode)==8):
-                NCNV=8
+            if ((int(CNVMode)%2) == 0):
+                NCNV=int(CNVMode)
             else:
                 print('Invalid Number.')
                 loop=True
