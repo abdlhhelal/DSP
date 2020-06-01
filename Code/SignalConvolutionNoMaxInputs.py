@@ -1,4 +1,4 @@
-#coded by Abdallah Helal in Sunday, May 31,2020
+#coded by Abdallah Helal on Sunday, May 31,2020
 #this code is for solving signals convolution equations
 #with no limits for the number of input signals
 
@@ -56,7 +56,7 @@ class InputNumbers:
             except:
                 print('The %s Numbers must be entered as x,x or x x'%self.NCNV)
                 loop=True
-        #converting string into list of two integers
+        #converting string into list of integers
         ValidNumbers=Numbers.split()
         if (len(ValidNumbers) == 1):
             ValidNumbers=Numbers.split(',')
