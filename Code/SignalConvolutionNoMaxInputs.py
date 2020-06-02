@@ -53,9 +53,8 @@ class InputNumbers:
             Numbers=input()
             #checking if the numbers are written right or not
             CheckRegex=re.compile(r'^(\s*(-\d|\d)\d*(,|\s)){%s}\s*(-\d|\d)\d*\s*$'%(self.NCNV-1))
-            CheckNum=CheckRegex.search(Numbers)
             try:
-                CheckValid = CheckNum.group()
+                CheckValid = CheckRegex.search(Numbers).group()
             except:
                 print('The %s Numbers must be entered as x,x or x x'%self.NCNV)
                 loop=True
@@ -75,7 +74,7 @@ def getNCNV():
         print('Enter 2 4 8 16.. for choosing 2CNV 4CNV 8CNV 16CNV.. respectively:')
         CNVMode=input()
         try:#checking if the number of signals are even or not
-            if ((int(CNVMode)%2) == 0):
+            if ((int(CNVMode)%2) == 0 and int(CNVMode)!=0):
                 NCNV=int(CNVMode)
             else:
                 print('Invalid Number.')
