@@ -32,7 +32,7 @@ class CNV_Type:
         B=sum[len(sum)//2:]
         S=zip(A,B)
         sum=[x+y for (x,y) in S]
-        print('Output is: [',end='') #printing the output
+        print(' %sCNV=['%self.NCNV,end='') #printing the output
         for i in range(len(sum)):
             if not (i == (len(sum)-1)):
                 print(str(sum[i])+',',end='')
