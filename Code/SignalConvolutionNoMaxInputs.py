@@ -52,7 +52,7 @@ class InputNumbers:
             print('Enter the %s '%self.NCNV + self.Order + ' Numbers :')
             Numbers=input()
             #checking if the numbers are written right or not
-            CheckRegex=re.compile(r'^(\s*(-\d|\d)\d*(,|\s)){%s}(-\d|\d)\d*\s*$'%(self.NCNV-1))
+            CheckRegex=re.compile(r'^(\s*(-\d|\d)\d*(,|\s)){%s}\s*(-\d|\d)\d*\s*$'%(self.NCNV-1))
             CheckNum=CheckRegex.search(Numbers)
             try:
                 CheckValid = CheckNum.group()
