@@ -32,10 +32,13 @@ class CNV_Type:
         B=sum[len(sum)//2:]
         S=zip(A,B)
         sum=[x+y for (x,y) in S]
-        print('Output is:',end='') #printing the output
+        print('Output is: [',end='') #printing the output
         for i in range(len(sum)):
-            print(' '+str(sum[i]),end='')
-        print('\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*.*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+            if not (i == (len(sum)-1)):
+                print(str(sum[i])+',',end='')
+            else:
+                print(str(sum[i])+']')
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*.*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         return None
 
 class InputNumbers:
@@ -49,7 +52,7 @@ class InputNumbers:
             print('Enter the %s '%self.NCNV + self.Order + ' Numbers :')
             Numbers=input()
             #checking if the numbers are written right or not
-            CheckRegex=re.compile(r'^((-|\d)\d*(,|\s)){%s}(-|\d)\d*$'%(self.NCNV-1))
+            CheckRegex=re.compile(r'^(\s*(-\d|\d)\d*(,|\s)){%s}(-\d|\d)\d*\s*$'%(self.NCNV-1))
             CheckNum=CheckRegex.search(Numbers)
             try:
                 CheckValid = CheckNum.group()
