@@ -34,7 +34,7 @@ class CNV_Type:
         sum=[x+y for (x,y) in S]
         print(' %sCNV=['%self.NCNV,end='') #printing the output
         for i in range(len(sum)):
-            if not (i == (len(sum)-1)):
+            if not i == len(sum)-1:
                 print(str(sum[i])+',',end='')
             else:
                 print(str(sum[i])+']')
@@ -60,7 +60,7 @@ class InputNumbers:
                 loop=True
         #converting string into list of integers
         ValidNumbers=Numbers.split()
-        if (len(ValidNumbers) == 1):
+        if len(ValidNumbers) == 1:
             ValidNumbers=Numbers.split(',')
         for i in range(len(ValidNumbers)):
             ValidNumbers[i] = int(ValidNumbers[i])
@@ -74,7 +74,7 @@ def getNCNV():
         print('Enter 2 4 8 16.. for choosing 2CNV 4CNV 8CNV 16CNV.. respectively:')
         CNVMode=input()
         try:#checking if the number of signals are even or not
-            if ((int(CNVMode)%2) == 0 and int(CNVMode)!=0):
+            if int(CNVMode)%2 == 0 and int(CNVMode)!=0:
                 NCNV=int(CNVMode)
             else:
                 print('Invalid Number.')
