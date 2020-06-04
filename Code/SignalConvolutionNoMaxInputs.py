@@ -46,18 +46,17 @@ class InputNumbers:
         self.Order = Order #first or second
         self.NCNV = NCNV #mode of convolution
     def getValues(self):
-        loop=True
-        while (loop):
-            loop=False
+        while True:
             print('Enter the %s '%self.NCNV + self.Order + ' Numbers :')
             Numbers=input()
             #checking if the numbers are written right or not
             CheckRegex=re.compile(r'^(\s*(-\d|\d)\d*(,|\s)){%s}\s*(-\d|\d)\d*\s*$'%(self.NCNV-1))
             try:
                 CheckValid = CheckRegex.search(Numbers).group()
+                break
             except:
                 print('The %s Numbers must be entered as x,x or x x'%self.NCNV)
-                loop=True
+                continue
         #converting string into list of integers
         ValidNumbers=Numbers.split()
         if len(ValidNumbers) == 1:
@@ -67,24 +66,19 @@ class InputNumbers:
         return ValidNumbers
 
 def getNCNV():
-    loop=True
-    while(loop):
-        NCNV=0
-        loop=False
+    while True:
         print('Enter 2 4 8 16.. for choosing 2CNV 4CNV 8CNV 16CNV.. respectively:')
         CNVMode=input()
         try:#checking if the number of signals are even or not
-            if int(CNVMode)%2 == 0 and int(CNVMode)!=0:
-                NCNV=int(CNVMode)
-            else:
-                print('Invalid Number.')
-                loop=True
+            int(CNVMode)%2 == 0 and int(CNVMode)!=0
+            NCNV=int(CNVMode)
+            break
         except:
             print('Invalid Number.')
-            loop=True
+            continue
     return NCNV
 
-while(True):
+while True:
     NCNV=getNCNV()
     X=InputNumbers('First',NCNV)
     Y=InputNumbers('Second',NCNV)
