@@ -70,11 +70,14 @@ def getNCNV():
         print('Enter 2 4 8 16.. for choosing 2CNV 4CNV 8CNV 16CNV.. respectively:')
         CNVMode=input()
         try:#checking if the number of signals are even or not
-            int(CNVMode)%2 == 0 and int(CNVMode)!=0
-            NCNV=int(CNVMode)
-            break
+            if int(CNVMode)%2 == 0 and int(CNVMode)!=0:
+                NCNV=int(CNVMode)
+                break
+            else:
+                print('Invalid Number.')
+                continue
         except:
-            print('Invalid Number.')
+            print('Invalid Input.')
             continue
     return NCNV
 
